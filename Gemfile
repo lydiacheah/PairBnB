@@ -45,6 +45,9 @@ group :development do
   gem 'spring'
 end
 
-# MISC
+# User management gem
 gem "clearance"
+
+# Privarcy gem
+gem "figaro"
 
