@@ -1,9 +1,34 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
-</div>
+<%= form_for @user do |form| %>
+	<div class="text-field">
+		<%= form.label :name %>
+		<%= form.text_field :name %>
+	</div>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
+	<div class="text-field">
+		<%= form.radio_button(:gender, "Male") %>
+		<%= form.label(:gender_male, "Male") %>
+		<%= form.radio_button(:gender, "Female") %>
+		<%= form.label(:gender_female, "Female") %>
+		<%= form.radio_button(:gender, "Neither") %>
+		<%= form.label(:gender_neither, "Neither") %>
+	</div>
+
+	<div class="text-field">
+		<%= form.label :birthday %>
+		<%= form.date_field :birthday %>
+	</div>
+
+	<div class="text-field">
+	  <%= form.label :email %>
+	  <%= form.text_field :email, type: 'email' %>
+	</div>
+
+	<div class="text-field">
+	  <%= form.label :password %>
+	  <%= form.password_field :password %>
+	</div>
+
+	<div class="submit-field">
+	  <%= form.submit %>
+	</div>
+<% end %>

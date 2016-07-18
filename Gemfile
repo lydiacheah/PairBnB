@@ -48,6 +48,10 @@ end
 # User management gem
 gem "clearance"
 
-# Privarcy gem
+# Privacy gem
 gem "figaro"
+
+# Facebook sign in
+gem "omniauth"
+gem "omniauth-facebook"
 
