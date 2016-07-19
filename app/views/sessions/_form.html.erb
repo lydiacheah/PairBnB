@@ -14,6 +14,7 @@
   </div>
 
   <div class="other-links">
+    <%= link_to "Login with Facebook", '/auth/facebook' %>
     <% if Clearance.configuration.allow_sign_up? %>
       <%= link_to t(".sign_up"), sign_up_path %>
     <% end %>
