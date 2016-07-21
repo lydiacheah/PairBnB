@@ -54,4 +54,3 @@ gem "figaro"
 # Facebook sign in
 gem "omniauth"
 gem "omniauth-facebook"
-

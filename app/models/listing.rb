@@ -1,5 +1,6 @@
 class Listing < ActiveRecord::Base
-	def index
-    @listings = Listing.all
-  end
+	include ActsAsTaggableOn::TagsHelper
+	
+	acts_as_taggable_on :tags
+	belongs_to :user
 end

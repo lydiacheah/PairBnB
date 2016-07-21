@@ -1,4 +1,8 @@
 class SessionsController < Clearance::SessionsController
+  def destroy
+    sign_out
+    redirect_to root_url
+  end
 
   def create_from_omniauth
     auth_hash = request.env["omniauth.auth"]

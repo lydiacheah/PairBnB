@@ -1,0 +1,41 @@
+<%= form_for @listing do |form| %>
+	<div class="listing-field">
+		<%= form.label 'Your Listing Name' %>
+		<%= form.text_field :name %>
+	</div>
+
+	<div class="address-field">
+		<%= form.label :listing_address %>
+		<%= form.text_field :address %>
+
+		<%= form.label :listing_city %>
+		<%= form.text_field :city %>
+
+		<%= form.label :listing_country %>
+		<%= form.text_field :country %>
+	</div>
+
+	<div class="listing-field">
+		<%= form.label "Property Type" %>
+		<%= form.text_field :property_type %>
+	</div>
+
+	<div class="listing-field">
+		<%= form.label "Number of People" %>
+		<%= form.text_field :people_number %>
+	</div>
+
+	<div class="listing-field">
+		<%= form.label "Number of Bathrooms" %>
+		<%= form.text_field :bathroom_number %>
+	</div>
+
+	<div class="listing-field">
+		<%= form.label "Number of Bedrooms" %>
+		<%= form.text_field :bedroom_number %>
+	</div>
+
+	<div class="submit-field">
+	  <%= form.submit %>
+	</div>
+<%end%>
