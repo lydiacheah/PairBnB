@@ -54,3 +54,6 @@ gem "figaro"
 # Facebook sign in
 gem "omniauth"
 gem "omniauth-facebook"
+
+# Image Uploader
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'

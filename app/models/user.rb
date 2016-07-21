@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
       u.name = auth_hash["info"]["name"]
       u.email = auth_hash["extra"]["raw_info"]["email"]
       u.password = SecureRandom.hex(10)
-      u.image = auth_hash["info"]["image"]
+      u.profile_picure = auth_hash["info"]["image"]
       u.authentications<<(authentication)
     end
   end
