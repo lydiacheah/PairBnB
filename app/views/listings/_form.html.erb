@@ -35,6 +35,13 @@
 		<%= form.text_field :bedroom_number %>
 	</div>
 
+	<div class="listing-field">
+		<%= form.label "Tags" %>
+		<%= form.fields_for :tags do |f|%>
+			<%= f.text_field :name %>
+		<% end %>
+	</div>
+
 	<div class="submit-field">
 	  <%= form.submit %>
 	</div>

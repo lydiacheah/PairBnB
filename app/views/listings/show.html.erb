@@ -1,5 +1,14 @@
 <h1><%= @listing.name %></h1>
 <h5><%= @listing.user.name %></h5>
+
+<% if @listing.tags.exists? %>
+  <% @listing.tags.each do |tag| %>
+    <div class="tags" style="display: inline; border: 1px solid; margin: 10px; padding: 3px">  
+    <%byebug%>
+      <%=tag.name%>
+    </div>
+    <% end %>
+<% end %>
 <p>
   <strong>Address:</strong>
   <%= @listing.address + ", " + @listing.city + ", " + @listing.country %>
