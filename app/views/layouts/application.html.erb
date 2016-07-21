@@ -1,52 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>PairBnB</title>
   <!-- CSS STUFF -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
   <!-- JAVASCRIPT -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <!-- STUFF -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true  %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="header">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">PairBnB</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#contact" data-toggle="collapse" data-target=".navbar-collapse.in">Contact</a></li>
-          <li>
-            <% if signed_in? -%>
-              <%= content_tag(:a, "Sign Out", class: "sign-out-button") %>
-            <% else -%>
-              <%= content_tag(:a, "Sign In", class: "sign-in-button") %>
-            <% end -%>
-          </li>
-        </ul>
-      </div>
+  <%= render 'layouts/navbar' %>
+
+  <div class="container">
+    <div id="flash">
+      <% flash.each do |key, value| -%>
+        <div id="flash_<%= key %>"><%=h value %></div>
+      <% end %>
     </div>
-    </nav>
-  </div>  
-
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
-    <% end %>
+    <%= yield %>
   </div>
-
-  <%= yield %>
+  
 </body>
 </html>

@@ -1,10 +1,10 @@
-<%= form_for @user do |form| %>
 	<div class="text-field">
-		<%= form.label :name %>
+		<%= form.label "Name" %>
 		<%= form.text_field :name %>
 	</div>
 
 	<div class="text-field">
+		<%= form.label :gender %>
 		<%= form.radio_button(:gender, "Male") %>
 		<%= form.label(:gender_male, "Male") %>
 		<%= form.radio_button(:gender, "Female") %>
@@ -31,4 +31,5 @@
 	<div class="submit-field">
 	  <%= form.submit %>
 	</div>
-<% end %>
+
+	<button type="button" class="btn btn-link cancel">Cancel</button>

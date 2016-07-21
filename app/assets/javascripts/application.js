@@ -14,3 +14,39 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function() {
+	$('.sign-in-button').click(function() {
+		$('.background').fadeIn();
+		$('.box').fadeOut(200);
+		$('.box').fadeOut(function() {
+			$('.sign-up-form').hide();
+			$('.box').fadeIn(800);
+			$('.sign-in-form').fadeIn(700);	
+		});	
+	});
+
+	$('.sign-up-button').click(function() {
+				$('.background').fadeIn();
+		$('.box').fadeOut(200);
+		$('.box').fadeOut(function() {
+			$('.sign-in-form').hide();
+			$('.box').fadeIn(800);
+			$('.sign-up-form').fadeIn(700);
+		});
+	});
+
+	$('.cancel').click(function() {
+		$('.box').fadeOut(200);
+		$('.box').fadeOut(function() {
+			$('.sign-in-form').hide(200);
+			$('.sign-up-form').hide(200);
+			$('.background').fadeOut();		
+		});	
+	});
+
+	$('.background').click(function() {
+		$('.background').fadeOut();
+		$('.box').fadeOut();
+	});
+});

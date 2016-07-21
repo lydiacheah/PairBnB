@@ -1,0 +1,29 @@
+<h1><%= @listing.name %></h1>
+<h5><%= @listing.user.name %></h5>
+<p>
+  <strong>Address:</strong>
+  <%= @listing.address + ", " + @listing.city + ", " + @listing.country %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @listing.property_type %>
+</p>
+
+<p>
+  <strong>Number of Guests:</strong>
+  <%= @listing.people_number %>
+</p>
+
+<p>
+  <strong>Bathrooms:</strong>
+  <%= @listing.bathroom_number %>
+</p>
+
+<p>
+  <strong>Bedrooms:</strong>
+  <%= @listing.bedroom_number %>
+</p>
+
+<%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'Back', listing_path %>
