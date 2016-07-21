@@ -7,8 +7,7 @@ class ListingsController < ApplicationController
 
 	def new
 		@user = current_user
-		@listing = @user.listings.new # make it an empty object its not a nil clas
-		# render 'new'
+		@listing = @user.listings.new # make it an empty object its not a nil class
 	end
 
 	def create
@@ -24,6 +23,15 @@ class ListingsController < ApplicationController
 		# 		# render 'new' #app/views/listings/new.html.erb
 		# 	end
 		# end	
+		@tag_list = params[:listing][:tags][:name].downcase
+		@tag_list = @tag_list.split(",")
+		@tag_list.each do |word|
+			word.gsub!(/[^0-9A-Za-z-]/, "")
+		end
+
+		@tag_list.uniq.each do |tag|
+			@listing.tags << Tag.find_or_create_by(name: tag)
+		end
 
 		if @listing.save 
 			redirect_to @listing, flash:{notice:"Your listing has been created!"} #'/listings/:id'
