@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721065414) do
+ActiveRecord::Schema.define(version: 20160721090947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160721065414) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "name",            limit: 140
+    t.json     "images"
   end
 
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
@@ -63,8 +64,8 @@ ActiveRecord::Schema.define(version: 20160721065414) do
     t.string   "remember_token",     limit: 128, null: false
     t.date     "birthday"
     t.string   "name"
-    t.string   "profile_picture"
     t.string   "gender"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

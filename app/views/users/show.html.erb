@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-	<img src=<%=@user.image%>>
+	<%if @user.avatar? %>
+		<%= image_tag(@user.avatar.thumb.url) %>
+	<%end%> 
 </p>
 
 <p>

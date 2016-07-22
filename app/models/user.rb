@@ -3,13 +3,16 @@ class User < ActiveRecord::Base
 
   has_many :authentications, :dependent => :destroy
   has_many :listings, foreign_key: :user_id
+  has_many :reservations
+  before_create :capitalize
+
+  mount_uploader :avatar, AvatarUploader
 
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
       u.name = auth_hash["info"]["name"]
       u.email = auth_hash["extra"]["raw_info"]["email"]
       u.password = SecureRandom.hex(10)
-      u.profile_picure = auth_hash["info"]["image"]
       u.authentications<<(authentication)
     end
   end
@@ -21,5 +24,9 @@ class User < ActiveRecord::Base
 
   def password_optional?
     true
+  end
+
+  def capitalize
+    self.name = self.name.split.map(&:capitalize).join(' ')
   end
 end

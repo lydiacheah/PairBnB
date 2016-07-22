@@ -4,7 +4,6 @@
 <% if @listing.tags.exists? %>
   <% @listing.tags.each do |tag| %>
     <div class="tags" style="display: inline; border: 1px solid; margin: 10px; padding: 3px">  
-    <%byebug%>
       <%=tag.name%>
     </div>
     <% end %>
@@ -33,6 +32,10 @@
   <strong>Bedrooms:</strong>
   <%= @listing.bedroom_number %>
 </p>
+
+<% @listing.images.each do |img| %>
+  <%=image_tag(img.thumb.url)%>
+<%end%>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listing_path %>
