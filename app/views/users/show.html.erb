@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-	<img src=<%=@user.image%>>
+	<%if @user.avatar? %>
+		<%= image_tag(@user.avatar.thumb.url) %>
+	<%end%> 
 </p>
 
 <p>
@@ -23,6 +25,13 @@
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
+
+<%if @user == current_user %>
+  <%= link_to 'Your Listings', user_listings_path(@user) %>
+  <%= link_to 'Your Reservations', user_reservations_path(@user) %>
+<%else%>
+  <%= link_to "#{@user.name}'s Listings", user_listings_path(@user) %>   
+<%end%>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

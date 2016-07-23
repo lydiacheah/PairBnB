@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160721032850) do
+ActiveRecord::Schema.define(version: 20160723115816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,21 @@ ActiveRecord::Schema.define(version: 20160721032850) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.string   "name",            limit: 140
+    t.json     "images"
+    t.integer  "price"
   end
 
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "listing_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "comment"
+  end
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "listing_id"
@@ -63,8 +75,8 @@ ActiveRecord::Schema.define(version: 20160721032850) do
     t.string   "remember_token",     limit: 128, null: false
     t.date     "birthday"
     t.string   "name"
-    t.string   "image"
     t.string   "gender"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

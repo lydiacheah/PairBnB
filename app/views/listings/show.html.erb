@@ -1,10 +1,13 @@
+<% if @reservation.nil? == false %>
+  <p>You have already made a reservation for this listing.</p>
+<%end%>
+
 <h1><%= @listing.name %></h1>
 <h5><%= @listing.user.name %></h5>
 
 <% if @listing.tags.exists? %>
   <% @listing.tags.each do |tag| %>
     <div class="tags" style="display: inline; border: 1px solid; margin: 10px; padding: 3px">  
-    <%byebug%>
       <%=tag.name%>
     </div>
     <% end %>
@@ -34,5 +37,14 @@
   <%= @listing.bedroom_number %>
 </p>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listing_path %>
+<% @listing.images.each do |img| %>
+  <%=image_tag(img.thumb.url)%>
+<%end%>
+
+<%if @listing.user != current_user && @reservation.nil?%>
+  <%= link_to 'Make a Reservation!', new_listing_reservation_path(@listing) %>
+<%end%>
+<% if @listing.user == current_user %>
+  <%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%end%>
+<%= link_to 'Back', listings_path %>

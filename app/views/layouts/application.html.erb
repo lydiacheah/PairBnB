@@ -18,12 +18,15 @@
   <%= render 'layouts/navbar' %>
 
   <div class="container">
-    <div id="flash">
-      <% flash.each do |key, value| -%>
-        <div id="flash_<%= key %>"><%=h value %></div>
-      <% end %>
+ 
+  <% flash.each do |key, value| -%>
+    <div class="alert alert-<%= key %> fade in">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close" style="">&times;</a><%=h value %>
     </div>
-    <%= yield %>
+  <%end%>
+  
+  <%= yield %>
+  
   </div>
   
 </body>

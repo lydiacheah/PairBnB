@@ -34,30 +34,40 @@ class ListingsController < ApplicationController
 		end
 
 		if @listing.save 
-			redirect_to @listing, flash:{notice:"Your listing has been created!"} #'/listings/:id'
-				# redirect_to listing_path(@listing)
+			redirect_to @listing, flash:{success:"Your listing has been created!"} #'/listings/:id'
+				# redirect_to listing_piath(@listing)
 		else
-			render :new, flash:{notice:"#{@listing.errors.values.first}"}
+			render :new, flash:{danger:"#{@listing.errors.values.first}"}
 				# render 'new' #app/views/listings/new.html.erb
 		end
 	end
 
 
 	def show
+		@reservation = current_user.reservations.find_by(listing_id: @listing.id)
 	end
 
 	def update
 		if @listing.update_attributes(listing_params)
-      redirect_to @listing
+      redirect_to @listing, flash:{success: "Your listing has been successfully updated."}
     else
-      redirect_to edit_listing_path(@listing)
+      redirect_to edit_listing_path(@listing), flash:{danger: @listing.errors.values.first}
     end
+	end
+
+	def destroy
+		if @listing.exists? 
+			@listing.destroy
+			redirect_to listings_path, flash:{success: "Your listing has been successfully deleted."}
+		else
+			redirect_to listings_path, flash:{danger: "The listing doesn't exist."}
+		end
 	end
 
 	private
 
 	def listing_params
-	  params.require(:listing).permit(:name, :address, :city, :country, :property_type, :people_number, :bathroom_number, :bedroom_number)
+	  params.require(:listing).permit(:name, :address, :city, :country, :property_type, :people_number, :bathroom_number, :bedroom_number, {images: []})
 	end	
 
 	def set_listing

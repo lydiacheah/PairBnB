@@ -1,0 +1,16 @@
+<%= form_for ([@listing, @reservation]) do |form| %>
+	<div class="reservation-field">
+		<%= form.label 'Reservation Start Date' %>
+		<%= form.date_field :start_date %>
+		<br>
+		<%= form.label 'Reservation End Date' %>
+		<%= form.date_field :end_date %>
+		<br>
+		<%= form.label 'Comments (optional)'%>
+		<%= form.text_field :comment %>
+	</div>
+
+	<div class="submit-field">
+	  <%= form.submit %>
+	</div>
+<%end%>

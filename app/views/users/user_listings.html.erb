@@ -1,0 +1,16 @@
+<%= @user.name %>'s Listings
+
+<%if @user.listings.size > 0%>
+	<%@user.listings.each do |l|%>
+		<div class="listings">
+			<%= link_to l.name, listing_path(l), class: "listing-name" %>
+			<h2><%=l.country%></h2>
+			<%=l.created_at%> 
+		</div>
+	<%end%>
+<%elsif @user == current_user %>
+	<p>You have no listings yet!</p>
+	<%= link_to 'Create a Listing', new_listing_path %>
+<%else%>
+	<p><%= @user.name %> has no listings yet!</p>
+<%end%>
