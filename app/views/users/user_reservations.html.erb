@@ -1,0 +1,10 @@
+<%@user.reservations.each do |r|%>
+	<div class="reservations">
+		<%= link_to r.listing.name, listing_path(r.listing), class: "listing-name" %>
+		<h2>r.listing.country</h2>
+		<p>
+			r.start_date
+			r.end_date
+		</p>
+	</div>
+<%end%>

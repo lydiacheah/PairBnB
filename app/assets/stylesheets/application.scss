@@ -14,6 +14,14 @@
  *= require_self
  */
 
+.alert {
+  width: 40%;
+  text-align: center;
+  margin: auto;
+}
+
+
+
 body {
 	margin-top: 50px;
 }
@@ -68,3 +76,4 @@ body {
 		height: 40em;
 	}
 }
+

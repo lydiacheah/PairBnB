@@ -16,9 +16,9 @@ class SessionsController < Clearance::SessionsController
       else
         user = User.create_with_auth_and_hash(authentication,auth_hash)
         @next = edit_user_path(user)   
-        @notice = "User created - confirm or edit details..."
+        @notice = "User successfully created! Why don't you share more about yourself?"
       end
     sign_in(user)
-    redirect_to @next, :notice => @notice
+    redirect_to @next, flash:{success: @notice }
   end
 end

@@ -1,3 +1,7 @@
+<% if @reservation.nil? == false %>
+  <p>You have already made a reservation for this listing.</p>
+<%end%>
+
 <h1><%= @listing.name %></h1>
 <h5><%= @listing.user.name %></h5>
 
@@ -37,5 +41,10 @@
   <%=image_tag(img.thumb.url)%>
 <%end%>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listing_path %>
+<%if @listing.user != current_user && @reservation.nil?%>
+  <%= link_to 'Make a Reservation!', new_listing_reservation_path(@listing) %>
+<%end%>
+<% if @listing.user == current_user %>
+  <%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%end%>
+<%= link_to 'Back', listings_path %>

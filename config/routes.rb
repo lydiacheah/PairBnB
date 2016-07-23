@@ -19,8 +19,11 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth", as: "facebook"
 
-  resources :listings, only: [:index, :new, :edit, :update, :show, :create] do
-    resources :reservations 
+  get "/users/:id/listings", to: "users#user_listings", as: "user_listings"
+  get "users/:id/reservations", to: "users#user_reservations", as: "user_reservations"
+
+  resources :listings do
+    resources :reservations, only: [:new, :edit, :update, :create, :destroy]
   end
 
   # get '/users/:user_id/listings/:id', to: "listings#profile", as: "listing_profile"

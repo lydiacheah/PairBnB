@@ -36,6 +36,11 @@
 	</div>
 
 	<div class="listing-field">
+		<%= form.label "Price Per Night" %>
+		<%= form.text_field :price %>
+	</div>
+
+	<div class="listing-field">
 		<%= form.label "Tags" %>
 		<%= form.fields_for :tags do |f|%>
 			<%= f.text_field :name %>
