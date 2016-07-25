@@ -12,12 +12,14 @@ class ReservationsController < ApplicationController
 
 	def create
 		@listing = Listing.find(params[:listing_id])
-		@reservation = @listing.reservations.new(reservation_params)
+		@reservation = Reservation.new(reservation_params)
 		@reservation.user_id = current_user.id
 
-		byebug
 		if (@reservation.reserved_dates & @listing.blocked_dates).empty?
+			@reservation.listing_id = @listing.id
 			if @reservation.save
+				@derp = ReservationMailer.booking_email(current_user, @listing.user, @reservation).deliver
+				byebug
 				redirect_to listing_path(params[:listing_id]), flash:{success:"Your reservation has been created!"} #'/listings/:id'
 			else
 				redirect_to new_listing_reservation_path(params[:listing_id]), flash:{danger:"#{@reservation.errors.values.first}"}
