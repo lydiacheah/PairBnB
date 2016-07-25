@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
 
 $(document).ready(function() {
@@ -42,6 +43,14 @@ $(document).ready(function() {
 			$('.sign-in-form').hide(200);
 			$('.sign-up-form').hide(200);
 			$('.background').fadeOut();		
+		});	
+	});
+
+	$('#sign-in-button').click(function() {
+		$('.box').fadeOut(200);
+		$('.box').fadeOut(function() {
+			$('.sign-in-form').hide(200);
+			$('.sign-up-form').show(200);		
 		});	
 	});
 

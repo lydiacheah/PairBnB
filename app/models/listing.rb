@@ -5,4 +5,6 @@ class Listing < ActiveRecord::Base
 	has_many :tags, through: :taggings
 
 	mount_uploaders :images, ImageUploader
+
+	validates :price, presence: {message: "Please enter a price value."}
 end

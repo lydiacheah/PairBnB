@@ -4,20 +4,17 @@
   <title>PairBnB</title>
   <!-- CSS STUFF -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
-  <!-- JAVASCRIPT -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
   <!-- STUFF -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true  %>
   <%= csrf_meta_tag %>
 </head>
-<body>
+<body class="container-fluid">
   <%= render 'layouts/navbar' %>
 
-  <div class="container">
+  <!-- <div class="container"> -->
  
   <% flash.each do |key, value| -%>
     <div class="alert alert-<%= key %> fade in">
@@ -27,7 +24,7 @@
   
   <%= yield %>
   
-  </div>
+  <!-- </div> -->
   
 </body>
 </html>
