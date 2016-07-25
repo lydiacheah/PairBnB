@@ -62,3 +62,6 @@ gem 'rmagick'
 
 # AWS Stuff
 gem 'fog'
+
+# Bootstrap
+gem 'bootstrap-sass', '~> 3.2.0'

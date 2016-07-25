@@ -1,3 +1,33 @@
 // Place all the styles related to the listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jumbotron {
+	background-image: url('jumbotron.svg');
+  height: 28em;
+  background-repeat: no-repeat;	
+  background-size: cover;
+  background-position-x: -10em;
+  padding-right: 0;
+  padding-left: 0;
+
+ 
+}
+
+.jumbotron-words {
+	font-family: 'Comfortaa';
+	margin-top: 100px;
+	color: white;
+	font-size: 67px;
+	text-align: center;
+
+	 @media(min-width:400px){
+  	font-size: 84px;
+  }
+/*	@media(min-width:48em){}
+	@media(min-width:62em){}*/
+	@media(min-width:75em){
+		height: 40em;
+	}
+	
+}

@@ -3,10 +3,8 @@
 
   <%= form_for @user do |form| %>
     <%= render partial: '/users/form', object: form %>
-
-    <div class="other-links">
+    	
       <%= link_to "Facebook Login", '/auth/facebook' %>
       <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
   <% end %>
 </div>

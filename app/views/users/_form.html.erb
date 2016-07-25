@@ -1,10 +1,9 @@
+	
 	<div class="text-field">
-		<%= form.label "Name" %>
-		<%= form.text_field :name %>
+		<%= form.text_field :name, placeholder: "Full Name" %>
 	</div>
 
-	<div class="text-field">
-		<%= form.label :gender %>
+	<div class="gender">
 		<%= form.radio_button(:gender, "Male") %>
 		<%= form.label(:gender_male, "Male") %>
 		<%= form.radio_button(:gender, "Female") %>
@@ -14,20 +13,20 @@
 	</div>
 
 	<div class="text-field">
-		<%= form.label :birthday %>
-		<%= form.date_field :birthday %>
+		<%= form.date_field :birthday, placeholder: "Birthday" %>
 	</div>
 
 	<div class="text-field">
-	  <%= form.label :email %>
-	  <%= form.text_field :email, type: 'email' %>
+	  <%= form.text_field :email, type: 'email', placeholder: "Email Address" %>
 	</div>
 
 	<div class="text-field">
-	  <%= form.label :password %>
-	  <%= form.password_field :password %>
+	  <%= form.password_field :password, placeholder: "Password" %>
 	</div>
 
-	<div class="submit-field">
+	<div class="submit-signup">
+		<button class="btn" id="sign-up-btn" type="submit">SIGN UP</button>
+	</div>
+	<!-- <div class="submit-field">
 	  <%= form.submit %>
-	</div>
+	</div> -->
