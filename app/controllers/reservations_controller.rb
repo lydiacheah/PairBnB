@@ -18,8 +18,7 @@ class ReservationsController < ApplicationController
 		if (@reservation.reserved_dates & @listing.blocked_dates).empty?
 			@reservation.listing_id = @listing.id
 			if @reservation.save
-				@derp = ReservationMailer.booking_email(current_user, @listing.user, @reservation).deliver
-				byebug
+				ReservationMailer.delay.booking_email(current_user, @listing.user, @reservation)
 				redirect_to listing_path(params[:listing_id]), flash:{success:"Your reservation has been created!"} #'/listings/:id'
 			else
 				redirect_to new_listing_reservation_path(params[:listing_id]), flash:{danger:"#{@reservation.errors.values.first}"}
