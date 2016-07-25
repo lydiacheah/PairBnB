@@ -15,10 +15,15 @@ class ReservationsController < ApplicationController
 		@reservation = @listing.reservations.new(reservation_params)
 		@reservation.user_id = current_user.id
 
-		if @reservation.save 
-			redirect_to listing_path(params[:listing_id]), flash:{success:"Your reservation has been created!"} #'/listings/:id'
+		byebug
+		if (@reservation.reserved_dates & @listing.blocked_dates).empty?
+			if @reservation.save
+				redirect_to listing_path(params[:listing_id]), flash:{success:"Your reservation has been created!"} #'/listings/:id'
+			else
+				redirect_to new_listing_reservation_path(params[:listing_id]), flash:{danger:"#{@reservation.errors.values.first}"}
+			end
 		else
-			redirect_to new_listing_reservation_path(params[:listing_id]), flash:{danger:"#{@reservation.errors.values.first}"}
+			redirect_to new_listing_reservation_path(params[:listing_id]), flash:{danger: "There is already a reservation made for those dates."}
 		end
 	end
 
