@@ -50,6 +50,8 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-daterangepicker-rails (0.1.4)
+      railties (~> 4.0)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     braintree (2.33.1)
@@ -233,6 +235,8 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    momentjs-rails (2.11.1)
+      railties (>= 3.1)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -342,6 +346,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-daterangepicker-rails
   bootstrap-sass (~> 3.2.0)
   braintree (~> 2.33.1)
   byebug
@@ -353,6 +358,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
+  momentjs-rails
   omniauth
   omniauth-facebook
   pg (~> 0.15)

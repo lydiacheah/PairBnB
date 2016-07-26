@@ -14,7 +14,6 @@ class ReservationsController < ApplicationController
 		@listing = Listing.find(params[:listing_id])
 		@reservation = Reservation.new(reservation_params)
 		@reservation.user_id = current_user.id
-
 		if (@reservation.reserved_dates & @listing.blocked_dates).empty?
 			@reservation.listing_id = @listing.id
 			if @reservation.save
@@ -24,7 +23,11 @@ class ReservationsController < ApplicationController
 				redirect_to new_listing_reservation_path(params[:listing_id]), flash:{danger:"#{@reservation.errors.values.first}"}
 			end
 		else
-			redirect_to new_listing_reservation_path(params[:listing_id]), flash:{danger: "There is already a reservation made for those dates."}
+			flash[:danger] = 'There is already a reservation made for those dates.'
+			respond_to do |format|
+				format.html { redirect_to new_listing_reservation_path(params[:listing_id]), flash:{danger: "There is already a reservation made for those dates."} }
+ 				format.js
+ 			end 
 		end
 	end
 

@@ -4,24 +4,27 @@
   <title>PairBnB</title>
   <!-- CSS STUFF -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
+<!--   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+ -->  <!-- JS -->
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+  <!-- Date Range Picker Stuff -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
   <!-- STUFF -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true  %>
   <%= csrf_meta_tag %>
+
 </head>
 <body class="container-fluid">
   <%= render 'layouts/navbar' %>
 
   <!-- <div class="container"> -->
- 
-  <% flash.each do |key, value| -%>
-    <div class="alert alert-<%= key %> fade in">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close" style="">&times;</a><%=h value %>
-    </div>
-  <%end%>
-  
+  <div id="flashes">
+    <%= render 'layouts/flashes' %>
+  </div>
+
   <%= yield %>
   
   <!-- </div> -->

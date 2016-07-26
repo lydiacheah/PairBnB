@@ -11,7 +11,16 @@
   padding-right: 0;
   padding-left: 0;
 
- 
+ 	@media(min-width:550px){
+		background-position-x: 0;
+		height: 30em;
+	}
+	@media(min-width:900px){
+		/*background-position-y: -5em;*/
+		height: 43em;
+	}/*
+		@media(min-width:75em){
+			height: 40em;*/
 }
 
 .jumbotron-words {
@@ -24,10 +33,13 @@
 	 @media(min-width:400px){
   	font-size: 84px;
   }
-/*	@media(min-width:48em){}
-	@media(min-width:62em){}*/
-	@media(min-width:75em){
-		height: 40em;
+  @media(min-width:900px){
+  	margin-top: 120px;
+		font-size: 104px;
 	}
-	
+	@media(min-width:900px){
+		margin-top: 110px;
+		font-size: 125px;
+	}
+
 }

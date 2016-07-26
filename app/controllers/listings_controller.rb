@@ -37,7 +37,6 @@ class ListingsController < ApplicationController
 			redirect_to @listing, flash:{success:"Your listing has been created!"} #'/listings/:id'
 				# redirect_to listing_piath(@listing)
 		else
-			byebug
 			render :new, flash:{danger:"#{@listing.errors.values.first}"}
 				# render 'new' #app/views/listings/new.html.erb
 		end
