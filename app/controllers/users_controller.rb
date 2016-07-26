@@ -1,12 +1,7 @@
 class UsersController < Clearance::UsersController
   before_action :set_user, only: [:create, :show, :edit, :update, :destroy, :user_listings]
-
+  before_action :check_user, only: [:edit, :user_reservations]
 	def edit
-    if @user == current_user 
-      redirect_to edit_user_path(@user)
-    else
-      redirect_to listings_path, flash:{danger: "You are not authorized to view that page."}
-    end
 	end
 
   def update
@@ -32,6 +27,12 @@ class UsersController < Clearance::UsersController
   end
 
 	private
+
+  def check_user
+    unless @user == current_user
+      redirect_to listings_path, flash:{danger: "You are not authorized to view that page."}
+    end
+  end
 
   def set_user
     @user = User.find(params[:id])

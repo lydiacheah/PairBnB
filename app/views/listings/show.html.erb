@@ -1,5 +1,7 @@
-<% if @reservation.nil? == false %>
+<% if !@reservation.nil? %>
   <p>You have already made a reservation for this listing.</p>
+  <%= link_to 'Pay Now', new_payment_path(@reservation.id) %>
+
 <%end%>
 
 <h1><%= @listing.name %></h1>

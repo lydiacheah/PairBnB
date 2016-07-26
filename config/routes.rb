@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'payments/new'
+
   root 'listings#index'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
@@ -26,7 +28,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :edit, :update, :create, :destroy]
   end
 
-  # get '/users/:user_id/listings/:id', to: "listings#profile", as: "listing_profile"
+  resources :payments, only: [:new, :create]
+  
 end
 
 

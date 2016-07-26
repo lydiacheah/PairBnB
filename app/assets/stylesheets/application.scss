@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require daterangepicker-bs3
  */
 
 @import "bootstrap-sprockets";
@@ -23,6 +24,13 @@ select:focus,
 textarea:focus,
 button:focus {
     outline: none;
+}
+
+#flashes {
+  position: absolute;
+  /* margin: auto; */
+  left: 15%;
+  width: 70%;
 }
 
 .navbar {
@@ -52,6 +60,7 @@ button:focus {
 
 .navbar-nav {
   margin-top: 0;
+  margin-right: 0 !important;
 }
 
 .navbar-toggle {
@@ -65,13 +74,14 @@ button:focus {
 .navbar-collapse {
   border-top: 1px solid #f25858;
   text-align: center;
+  border-top-color: transparent;
 }
 
 .alert {
   width: 40%;
   text-align: center;
   margin: auto;
-  z-index: 5000;
+  z-index: 9000;
 }
 
 .alert-notice {
@@ -247,3 +257,6 @@ body {
   font-family: Helvetica;
 }
 
+.form-container {
+  margin-top: 20px;
+}

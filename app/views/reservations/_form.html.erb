@@ -1,16 +1,28 @@
-<%= form_for ([@listing, @reservation]) do |form| %>
+<%= form_for [@listing, @reservation], remote: true do |form| %>
 	<div class="reservation-field">
-		<%= form.label 'Reservation Start Date' %>
-		<%= form.date_field :start_date %>
+		<%= form.label 'Reservation Dates' %>
 		<br>
-		<%= form.label 'Reservation End Date' %>
+		<!-- form.text_field :dates, id: 'dates', placeholder: "Choose your dates" -->
+		<%= form.date_field :start_date %>
 		<%= form.date_field :end_date %>
 		<br>
-		<%= form.label 'Comments (optional)'%>
-		<%= form.text_field :comment %>
+		<%= form.label 'Addtional comments'%>
+		<br>
+		<%= form.text_field :comment, placeholder: "Optional" %>
 	</div>
-
+	<br>
 	<div class="submit-field">
 	  <%= form.submit %>
 	</div>
 <%end%>
+
+<script>
+	$(document).ready(function() {
+  	$('#dates').daterangepicker({
+  		autoUpdateInput: true,
+      locale: {
+          cancelLabel: 'Clear'
+      }
+  	});
+	});
+</script>

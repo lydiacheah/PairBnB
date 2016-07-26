@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :listings, foreign_key: :user_id, dependent: :destroy
   has_many :reservations, dependent: :destroy
+  has_many :payments
   before_create :capitalize
 
   mount_uploader :avatar, AvatarUploader
@@ -28,5 +29,12 @@ class User < ActiveRecord::Base
 
   def capitalize
     self.name = self.name.split.map(&:capitalize).join(' ')
+  end
+
+  def dates=(reserved_dates)
+    byebug
+    @reserved_dates = reserved_dates.split(" - ")
+    start_date = @reserved_dates[0]
+    end_date = @reserved_dates[1]
   end
 end
