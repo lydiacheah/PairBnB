@@ -1,12 +1,7 @@
 <div class="jumbotron">
 	<div class="jumbotron-words">bearbnb</div>
 	<div class="search form">
-		<%= form_tag(listings_search_path, method: :get) do %>
-	  <p>
-	    <%= text_field_tag :search, params[:search] %>
-	    <%= submit_tag "Search", :name => nil %>
-	  </p>
-		<% end %>
+		<%= render 'listings_search_form' %>
 	</div>
 </div>
  

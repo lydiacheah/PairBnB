@@ -8,7 +8,7 @@ class Listing < ActiveRecord::Base
 
 	mount_uploaders :images, ImageUploader
 
-	searchkick
+	searchkick word_start: [:name, :address, :country, :city]
 
 	def blocked_dates
 		dates = []

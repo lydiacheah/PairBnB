@@ -78,3 +78,6 @@ gem 'bootstrap-daterangepicker-rails'
 
 # Search Engine
 gem "searchkick"
+
+# Pagination
+gem 'kaminari'

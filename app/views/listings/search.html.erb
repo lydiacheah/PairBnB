@@ -1,5 +1,9 @@
 <div class="container results">
-	<%if @listings.nil? %>
+	<h1>Search results for <%= params[:search] %></h1>
+	<div class="search form">
+		<%= render 'listings_search_form' %>
+	</div>
+	<%if @listings.results.empty? %>
 		<p>Hmm.. There seems to be no listings yet. Why not create one?</p>
 	<%else%>
 		<%@listings.each do |listing| %>
@@ -8,6 +12,7 @@
 					<%= listing.images %>
 				<%end%>	
 				<br>
+				<%byebug%>
 				<%= link_to(listing) do %>
 				  <strong><%= listing.name %></strong>
 				<% end %>
@@ -17,5 +22,6 @@
 				<%= listing.city + ', ' + listing.country %>
 			</div>
 		<%end%>
-	<%end%>	
+	<%end%>
+	<%= paginate(@listings) %>	
 </div>

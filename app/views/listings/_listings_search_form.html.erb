@@ -1,0 +1,9 @@
+<%= form_tag(listings_search_path, method: :get) do %>
+  <p>
+    <%= text_field_tag :search %>
+    <%= date_field_tag :start_date %>
+    <%= date_field_tag :end_date %>
+    <%= select_tag :number_of_people, options_for_select((1..16).to_a) %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>

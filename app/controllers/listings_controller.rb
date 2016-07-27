@@ -6,7 +6,23 @@ class ListingsController < ApplicationController
 	end
 
 	def search
-		@listings = Listing.search(params[:search])
+		@listings = Listing.search params[:search],
+		fields: [
+			{name: :word_start},
+			{country: :word_start},
+			{city: :word_start},
+			{address: :word_start}
+			],
+		where: {
+			people_number: params[:number_of_people]
+			},
+		page: params[:page], per_page: 10
+		@dates = (params[:start_date].to_date..params[:end_date].to_date).to_a
+		@listings.each do |listing|	
+			if !(listing.blocked_dates & @dates).empty?
+				@listings.results.delete(listing)
+			end
+		end
 	end
 
 	def new
