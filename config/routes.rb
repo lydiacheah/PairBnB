@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:new, :edit, :update, :create, :destroy]
   end
 
+  get "/search", to: "listings#search", as: "listings_search"
+
   resources :payments, only: [:new, :create]
   
 end

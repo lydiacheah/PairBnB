@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
+  searchkick
+
   def self.create_with_auth_and_hash(authentication,auth_hash)
     create! do |u|
       u.name = auth_hash["info"]["name"]

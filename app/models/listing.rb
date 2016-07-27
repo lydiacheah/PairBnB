@@ -4,9 +4,11 @@ class Listing < ActiveRecord::Base
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
 
+	validates :price, presence: {message: "Please enter a price value."}
+
 	mount_uploaders :images, ImageUploader
 
-	# validates :price, presence: {message: "Please enter a price value."}
+	searchkick
 
 	def blocked_dates
 		dates = []

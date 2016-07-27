@@ -75,3 +75,6 @@ gem 'braintree', '~> 2.33.1'
 # Daterangepicker
 gem 'momentjs-rails'
 gem 'bootstrap-daterangepicker-rails'
+
+# Search Engine
+gem "searchkick"
