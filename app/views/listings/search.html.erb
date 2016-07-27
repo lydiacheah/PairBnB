@@ -1,0 +1,21 @@
+<div class="container results">
+	<%if @listings.nil? %>
+		<p>Hmm.. There seems to be no listings yet. Why not create one?</p>
+	<%else%>
+		<%@listings.each do |listing| %>
+			<div class="listings-results">
+				<%if !listing.images.empty?%>
+					<%= listing.images %>
+				<%end%>	
+				<br>
+				<%= link_to(listing) do %>
+				  <strong><%= listing.name %></strong>
+				<% end %>
+				<br>
+				<%= listing.user.name %>
+				<br>
+				<%= listing.city + ', ' + listing.country %>
+			</div>
+		<%end%>
+	<%end%>	
+</div>

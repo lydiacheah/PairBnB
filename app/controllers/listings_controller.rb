@@ -2,7 +2,11 @@ class ListingsController < ApplicationController
 	before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@listings = Listing.all	
+		@listings = Listing.all
+	end
+
+	def search
+		@listings = Listing.search(params[:search])
 	end
 
 	def new
@@ -43,7 +47,7 @@ class ListingsController < ApplicationController
 	end
 
 
-	def show
+	def show #'listings/:id'
 		@reservation = current_user.reservations.find_by(listing_id: @listing.id)
 	end
 
@@ -67,7 +71,7 @@ class ListingsController < ApplicationController
 	private
 
 	def listing_params
-	  params.require(:listing).permit(:name, :address, :city, :country, :property_type, :people_number, :bathroom_number, :bedroom_number, {images: []})
+	  params.require(:listing).permit(:name, :address, :city, :country, :property_type, :people_number, :bathroom_number, :bedroom_number, :price, {images: []})
 	end	
 
 	def set_listing
